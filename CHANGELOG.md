@@ -10,7 +10,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Initial Release
 
 **Core Features:**
-- Complete decision tree implementation based on Eto 3-Stage Framework
+- Complete decision tree implementation based on the AI HSR 3-Stage Framework
 - 9-step interactive assessment process
 - Real-time progress tracking with percentage completion
 - Warm, educational tone throughout
