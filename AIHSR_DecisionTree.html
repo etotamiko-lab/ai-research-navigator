@@ -1,0 +1,1191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Navigator - Find Your Path with Confidence</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --warm-cream: #faf8f3;
+            --deep-navy: #1a2332;
+            --warm-gold: #d4a574;
+            --soft-blue: #4a7c9e;
+            --success-green: #5f9f7f;
+            --info-sky: #7ba6c1;
+            --warning-amber: #e8b86d;
+            --subtle-gray: #e8e4dc;
+            --text-primary: #2d3748;
+            --text-secondary: #5a6c7d;
+        }
+        
+        * { 
+            margin: 0; 
+            padding: 0; 
+            box-sizing: border-box; 
+        }
+        
+        body { 
+            font-family: 'DM Sans', -apple-system, sans-serif; 
+            line-height: 1.7; 
+            color: var(--text-primary); 
+            background: linear-gradient(135deg, #faf8f3 0%, #e8e4dc 100%);
+            min-height: 100vh; 
+            padding: 20px;
+        }
+        
+        .container { 
+            max-width: 1000px; 
+            margin: 0 auto; 
+            background: white; 
+            border-radius: 24px; 
+            box-shadow: 0 20px 60px rgba(26, 35, 50, 0.08);
+            overflow: hidden;
+            animation: slideUp 0.6s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header { 
+            background: linear-gradient(135deg, var(--deep-navy) 0%, #2d3e50 100%);
+            color: white; 
+            padding: 60px 50px; 
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .header h1 { 
+            font-family: 'Crimson Pro', serif;
+            color: var(--warm-gold); 
+            font-size: 2.8em; 
+            margin-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .header p {
+            font-size: 1.15em;
+            opacity: 0.9;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .content { 
+            padding: 50px;
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .progress-container {
+            margin-bottom: 40px;
+        }
+        
+        .progress-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+        
+        .progress-bar { 
+            background: var(--subtle-gray);
+            height: 8px; 
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .progress-fill { 
+            background: linear-gradient(90deg, var(--soft-blue) 0%, var(--warm-gold) 100%);
+            height: 100%; 
+            transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 10px rgba(74, 124, 158, 0.3);
+        }
+        
+        .encouragement-banner {
+            background: linear-gradient(135deg, #f0f7fa 0%, #e6f2f7 100%);
+            border-left: 4px solid var(--soft-blue);
+            padding: 20px 25px;
+            margin-bottom: 35px;
+            border-radius: 12px;
+            animation: slideInLeft 0.5s ease-out;
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        .encouragement-banner p {
+            margin: 0;
+            color: var(--text-primary);
+            font-size: 1.05em;
+            line-height: 1.6;
+        }
+        
+        .encouragement-banner strong {
+            color: var(--soft-blue);
+        }
+        
+        .question-card {
+            margin-bottom: 30px;
+        }
+        
+        .question-text { 
+            font-family: 'Crimson Pro', serif;
+            font-size: 2em; 
+            font-weight: 700; 
+            color: var(--deep-navy); 
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        .info-box { 
+            background: linear-gradient(135deg, #fefbf6 0%, #faf7f0 100%);
+            border-left: 4px solid var(--warm-gold);
+            padding: 25px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        }
+        
+        .info-box p {
+            color: var(--text-primary);
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+        
+        .details-section { 
+            background: var(--warm-cream);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            border: 1px solid var(--subtle-gray);
+            transition: transform 0.2s ease;
+        }
+        
+        .details-section:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+        }
+        
+        .details-section h3 { 
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: var(--soft-blue);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .details-section h3::before {
+            content: '→';
+            color: var(--warm-gold);
+            font-weight: bold;
+        }
+        
+        .details-section p {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .option-button { 
+            background: white;
+            border: 2px solid var(--subtle-gray);
+            padding: 25px 30px;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: left;
+            font-size: 1.1em;
+            font-weight: 500;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-primary);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .option-button::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: var(--warm-gold);
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .option-button:hover {
+            border-color: var(--warm-gold);
+            background: linear-gradient(135deg, #fffef9 0%, #fefbf6 100%);
+            transform: translateX(8px);
+            box-shadow: 0 8px 20px rgba(212, 165, 116, 0.15);
+        }
+        
+        .option-button:hover::before {
+            transform: scaleY(1);
+        }
+        
+        .option-button::after {
+            content: '→';
+            font-size: 1.4em;
+            color: var(--warm-gold);
+            opacity: 0.6;
+            transition: all 0.3s ease;
+        }
+        
+        .option-button:hover::after {
+            opacity: 1;
+            transform: translateX(5px);
+        }
+        
+        .helper-tip {
+            background: linear-gradient(135deg, #f8f3ff 0%, #f0ebfa 100%);
+            border-radius: 12px;
+            padding: 20px 25px;
+            margin-top: 20px;
+            border-left: 4px solid var(--info-sky);
+            animation: fadeIn 0.5s ease-out 0.3s both;
+        }
+        
+        .helper-tip-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--soft-blue);
+        }
+        
+        .helper-tip-header::before {
+            content: '💡';
+            font-size: 1.2em;
+        }
+        
+        .helper-tip p {
+            color: var(--text-secondary);
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin: 0;
+        }
+        
+        .nav-buttons { 
+            display: flex; 
+            gap: 12px; 
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn { 
+            padding: 16px 32px;
+            border-radius: 12px;
+            cursor: pointer;
+            font-weight: 600;
+            border: none;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .back-btn { 
+            background: var(--subtle-gray);
+            color: var(--text-primary);
+        }
+        
+        .back-btn:hover {
+            background: #d8d4cc;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        
+        .restart-btn { 
+            background: var(--deep-navy);
+            color: var(--warm-gold);
+        }
+        
+        .restart-btn:hover {
+            background: #2d3e50;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(26, 35, 50, 0.3);
+        }
+        
+        .download-btn { 
+            background: linear-gradient(135deg, var(--soft-blue) 0%, #3d6a88 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(74, 124, 158, 0.3);
+        }
+        
+        .download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(74, 124, 158, 0.4);
+        }
+        
+        .result-hero {
+            background: linear-gradient(135deg, var(--deep-navy) 0%, #2d3e50 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin-bottom: 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(26, 35, 50, 0.2);
+        }
+        
+        .result-hero::before {
+            content: '';
+            position: absolute;
+            top: -30%;
+            right: -10%;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(212, 165, 116, 0.2) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+        
+        .result-badge {
+            display: inline-block;
+            background: rgba(212, 165, 116, 0.2);
+            color: var(--warm-gold);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .result-hero h1 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: var(--warm-gold);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .result-hero p {
+            font-size: 1.15em;
+            opacity: 0.9;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .section-card { 
+            border: 1px solid var(--subtle-gray);
+            padding: 35px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+            transition: transform 0.2s ease;
+        }
+        
+        .section-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+        }
+        
+        .section-card h3 {
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.6em;
+            color: var(--deep-navy);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        
+        .section-card h3::before {
+            content: '✓';
+            color: var(--success-green);
+            font-size: 1.2em;
+            background: rgba(95, 159, 127, 0.1);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .summary-table { 
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin-top: 20px;
+            font-size: 0.95em;
+            overflow: hidden;
+            border-radius: 12px;
+            border: 1px solid var(--subtle-gray);
+        }
+        
+        .summary-table td, .summary-table th { 
+            border-bottom: 1px solid var(--subtle-gray);
+            padding: 18px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .summary-table th { 
+            background: linear-gradient(135deg, var(--warm-cream) 0%, #faf7f0 100%);
+            font-weight: 700;
+            color: var(--deep-navy);
+            font-family: 'Crimson Pro', serif;
+            font-size: 1.05em;
+        }
+        
+        .summary-table tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .summary-table tbody tr:hover {
+            background: #fefefe;
+        }
+        
+        .celebration-box {
+            background: linear-gradient(135deg, #f0f9f4 0%, #e6f4ed 100%);
+            border: 2px solid var(--success-green);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 30px;
+            text-align: center;
+        }
+        
+        .celebration-box h4 {
+            font-family: 'Crimson Pro', serif;
+            color: var(--success-green);
+            font-size: 1.8em;
+            margin-bottom: 12px;
+        }
+        
+        .celebration-box p {
+            color: var(--text-secondary);
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        
+        .help-callout {
+            background: linear-gradient(135deg, #fffef9 0%, #fefbf6 100%);
+            border: 2px dashed var(--warm-gold);
+            padding: 25px;
+            margin-top: 30px;
+            border-radius: 16px;
+        }
+        
+        .help-callout strong {
+            color: var(--deep-navy);
+            font-size: 1.1em;
+        }
+        
+        .help-callout p {
+            margin-top: 10px;
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .footer { 
+            background: var(--deep-navy);
+            color: #9ca3af;
+            padding: 30px;
+            text-align: center;
+            font-size: 0.9em;
+        }
+        
+        .footer strong {
+            color: var(--warm-gold);
+        }
+        
+        @media (max-width: 768px) {
+            .content {
+                padding: 30px 25px;
+            }
+            
+            .header {
+                padding: 40px 30px;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+            
+            .question-text {
+                font-size: 1.6em;
+            }
+            
+            .nav-buttons {
+                flex-direction: column;
+            }
+            
+            .nav-btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <div class="header">
+            <h1>AI Research Navigator</h1>
+            <p>Your friendly guide through IRB requirements - we'll figure this out together</p>
+        </div>
+        <div id="app" class="content"></div>
+        <div class="footer">
+            <p>Created with care by <strong>TechInHSR LLC</strong> | Tamiko Eto, MA, CIP</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">Empowering researchers with clarity and confidence since 2004</p>
+        </div>
+    </div>
+
+    <script>
+        const decisionTree = {
+            start: {
+                question: "Let's Find Your Path Together",
+                info: "Think of this as a conversation, not a test. We'll walk through a few questions to help you understand exactly what type of review your AI project needs. No regulatory jargon overload - just clear, supportive guidance.",
+                encouragement: "You're already ahead of the game by being here. Most researchers feel uncertain about IRB requirements for AI - that's completely normal. Let's demystify this together.",
+                tip: "This tool uses the Eto 3-Stage Framework - a structured approach that's been adopted by 23+ institutions. You're in good hands.",
+                options: [{ label: "I'm ready - let's start", next: "clinical_investigation" }]
+            },
+            clinical_investigation: {
+                question: "Are You Testing an Investigational AI Device?",
+                info: "In plain English: Are you running an experiment to find out if your AI tool is safe and effective for a specific medical use? This is what FDA calls a 'Clinical Investigation.'",
+                encouragement: "Don't worry if you're unsure - we'll help you figure it out. The key question is: Are you testing whether the AI works as intended, or are you using an already-validated AI for other purposes?",
+                tip: "If you're just analyzing existing data or using FDA-cleared tools in standard ways, the answer is likely 'No.' Clinical Investigation specifically means you're proving safety/effectiveness.",
+                options: [
+                    { 
+                        label: "Yes - We're testing if our AI is safe/effective for a specific use", 
+                        next: "ci_result", 
+                        summary: "Status: FDA Clinical Investigation", 
+                        why: "Triggers 21 CFR 50.3(c) & 56.102(c) as an experiment involving a test article and human subjects." 
+                    },
+                    { 
+                        label: "No - We're not testing safety/effectiveness", 
+                        next: "clinical_evaluation", 
+                        summary: "Status: Not a Clinical Investigation", 
+                        why: "Activity does not involve safety/efficacy testing of a test article under FDA definitions." 
+                    }
+                ]
+            },
+            clinical_evaluation: {
+                question: "Are You Establishing Clinical Association (Stage 1)?",
+                info: "Stage 1 is about discovering whether there's a meaningful medical connection. Are you trying to prove that what your AI detects or predicts actually relates to a real health condition? This is pure algorithm development using existing data - you're not testing the tool on new patients yet.",
+                encouragement: "Stage 1 is the foundation - you're building the evidence that your AI idea has clinical merit. Think of it like asking: 'Can we even predict this thing?' before worrying about how accurate the prediction is.",
+                tip: "Stage 1 examples: Training an algorithm on existing medical records to see if certain patterns predict diabetes. Testing whether retinal scan features correlate with cardiovascular risk. This is NOT about deploying the tool - just proving the concept has clinical validity.",
+                details: [
+                    { 
+                        title: "What is Clinical Association?", 
+                        content: "You're establishing that there's a valid medical link between your AI's output and a real clinical condition. You're using existing, authorized data to train and initially test your algorithm. No new patient interactions yet." 
+                    },
+                    { 
+                        title: "Stage 1 vs. Later Stages", 
+                        content: "Stage 1: 'Can we predict X from Y?' (algorithm development, existing data)\nStage 2: 'How well does it perform?' (validation on new data, may involve medical device determination)\nStage 3: 'Does it work in real clinical use?' (live deployment, affects patient care)" 
+                    }
+                ],
+                options: [
+                    { 
+                        label: "Yes - We're establishing clinical association (Stage 1)", 
+                        next: "research_definition", 
+                        summary: "Focus: Stage 1 - Clinical Association", 
+                        why: "Stage 1 focuses on algorithm development and establishing clinical association using existing data per the Eto Framework." 
+                    },
+                    { 
+                        label: "No - We're past Stage 1 (validation or deployment)", 
+                        next: "stage2_device_check", 
+                        summary: "Focus: Beyond Stage 1", 
+                        why: "Activity has moved beyond initial clinical association discovery." 
+                    }
+                ]
+            },
+            stage2_device_check: {
+                question: "Are You Validating Performance in Stage 2?",
+                info: "Stage 2 is where things get more complex. You're now testing how well your AI performs on NEW data it hasn't seen before. The critical question is about the TOOL'S INTENDED DESIGN AND FUNCTION - not how you're using it in this specific research project.",
+                encouragement: "The medical device question isn't about being in trouble - it's about finding the right regulatory pathway. If your AI tool is designed to influence clinical decisions, FDA wants to ensure it's safe and effective. This is patient protection, not bureaucracy.",
+                tip: "CRITICAL DISTINCTION: 'Intended use' means HOW THE TOOL IS DESIGNED TO FUNCTION, not how you're using it in your study. Ask: What is this tool designed for? Who is it designed for? What environment is it designed for? If it's patient-facing, it's automatically a device.",
+                details: [
+                    { 
+                        title: "What Is 'Intended Use'?", 
+                        content: "Intended use = the tool's DESIGN purpose and function:\n\n• WHO is it designed for? (Clinicians? Patients? Researchers?)\n• WHAT CONTEXT? (Clinical care? Research only? Administrative?)\n• WHAT FUNCTION? (Diagnose? Treat? Prevent? Predict? Analyze?)\n\nIMPORTANT: If the tool is designed to be PATIENT-FACING (used by or on patients), it's automatically a medical device requiring SR/NSR determination.\n\nThis is NOT about how you're using the tool in your specific research project - it's about what the tool itself is fundamentally designed to do." 
+                    },
+                    { 
+                        title: "Medical Device Definition (21 USC 321(h)) & FDA 2026 CDS Guidance", 
+                        content: "A tool is a medical device if its DESIGN PURPOSE is to diagnose, treat, cure, mitigate, or prevent disease. To determine this, apply the FDA's 4-Criteria Test from the 2026 CDS guidance. If your tool FAILS any criterion, it's a device:\n\nCRITERION 1: Does it acquire, process, or analyze medical images, IVD signals, or patterns from signal acquisition systems?\n• DEVICE: Tool analyzes radiology images to detect tumors\n• DEVICE: Tool processes ECG signals to identify arrhythmias\n• NOT device: Tool displays lab results without analysis\n\nCRITERION 2: Does it display/analyze information normally discussed between HCPs or with patients?\n• NOT device: Displays standard vital signs and lab values\n• DEVICE: Generates novel risk scores not typically discussed\n\nCRITERION 3: Does it provide patient-specific recommendations to HCPs?\n• DEVICE: Recommends specific drug and dosage for this patient\n• DEVICE: Provides time-critical alerts (e.g., 'sepsis risk in next 6 hours')\n• NOT device (enforcement discretion): Suggests single clinically appropriate antibiotic when only one option meets guidelines\n\nCRITERION 4: Can HCPs independently review the basis without primarily relying on it?\n• DEVICE: Black-box AI with no explanation of how conclusion was reached\n• DEVICE: Provides recommendation requiring immediate action without review time\n• NOT device: Transparent logic with sufficient information for independent verification\n\nCLEAR DEVICE EXAMPLES:\n• Algorithm DESIGNED to predict sepsis risk for triggering clinical response protocols → FAILS Criterion 3 (time-critical, specific output)\n• Tool DESIGNED to analyze chest X-rays and recommend diagnosis → FAILS Criterion 1 (processes medical images)\n• Software DESIGNED for patients to assess symptoms and receive treatment guidance → FAILS Criterion 3 (patient-facing = device) + likely Criterion 4 (patients cannot independently review clinical basis)\n\nCLEAR NON-DEVICE EXAMPLES:\n• Dashboard DESIGNED for researchers to study population health patterns → Passes all criteria (not patient-specific recommendations)\n• Tool DESIGNED to display standard clinical guidelines based on diagnosis code → Passes all criteria (supports HCP with established information)\n• Software DESIGNED for hospital operations/workflow optimization → Passes all criteria (not clinical decision-making)" 
+                    },
+                    { 
+                        title: "Why This Matters for Stage 2 Validation", 
+                        content: "If you're validating a tool that might meet the FDA device definition, your IRB MUST make a formal Significant Risk (SR) vs. Non-Significant Risk (NSR) determination. Only a convened Full Board can make this determination - NOT an expedited reviewer.\n\nThis requirement applies even if your validation testing is 'off-line' and not yet affecting patient care. The device status triggers Full Board review. (Note: After initial Full Board approval, continuing review CAN be expedited if the Board votes to allow it.)" 
+                    },
+                    { 
+                        title: "The QI Loophole Problem", 
+                        content: "Some institutions try to call device development 'Quality Improvement' to avoid FDA oversight. This is problematic: the tool's intended design and function determines device status regardless of whether you call the development project QI or research. Creating a clinical diagnostic tool and deploying it without proper validation exposes patients to risk and institutions to liability." 
+                    }
+                ],
+                options: [
+                    { 
+                        label: "Yes - This tool is DESIGNED for clinical use (diagnosis/treatment/prevention/mitigation/cure)", 
+                        next: "device_validation_path", 
+                        summary: "Stage 2: Medical Device Validation", 
+                        why: "Tool's intended design and function makes this a medical device under 21 USC 321(h). Validating a potential device requires IRB SR/NSR determination via Full Board review, regardless of how it's used in this specific research project." 
+                    },
+                    { 
+                        label: "No - This tool is NOT designed for clinical decision-making", 
+                        next: "research_definition", 
+                        summary: "Stage 2: Non-Device Validation", 
+                        why: "Tool is not designed to diagnose, treat, prevent, or mitigate disease, so not a medical device. Standard research oversight applies." 
+                    }
+                ]
+            },
+            device_validation_path: {
+                question: "Medical Device Validation (Stage 2) - Understanding Your Path",
+                info: "Because your tool is designed for clinical use, you're validating a medical device. When validating a tool that might meet the FDA device definition, the IRB MUST make a formal Significant Risk (SR) vs. Non-Significant Risk (NSR) determination. This determination can ONLY be made by a convened Full Board - not by expedited review.",
+                encouragement: "This might feel like extra burden, but it's actually your regulatory passport. An NSR determination from your Full Board means you can proceed without filing a full Investigational Device Exemption (IDE) with FDA. The IRB acts as FDA's surrogate, which speeds things up considerably compared to a formal FDA application process.",
+                tip: "Good news: After the Full Board grants initial approval and makes the SR/NSR determination, the Board can vote to allow CONTINUING review (subsequent amendments, annual renewals) to be handled via expedited process. But that initial SR/NSR determination? That requires the full committee.",
+                options: [
+                    { 
+                        label: "Continue to determine if this is Research or QI", 
+                        next: "research_definition", 
+                        summary: "Stage 2: Device Validation Path - Full Board Required", 
+                        why: "Validating a tool that might meet FDA device definition requires IRB SR/NSR determination per 21 CFR 812. Only a convened Full Board can make this determination, even for off-line validation. Continuing review may be expedited after initial Full Board approval if the Board votes to allow it." 
+                    }
+                ]
+            },
+            research_definition: {
+                question: "Is This 'Research' or 'Local Quality Improvement'?",
+                info: "Here's the fundamental distinction: Research aims to create new generalizable knowledge that others can use. Quality Improvement (QI) focuses on making your specific hospital or clinic work better - it's local and internal.",
+                encouragement: "This is one of the trickiest distinctions in research ethics, so don't feel bad if you're uncertain. The intent matters more than the methods. Ask yourself: Do I want to publish this or share findings externally?",
+                tip: "If you plan to publish findings, present at conferences, or help other institutions learn from your work, it's Research. If you're just trying to improve your own operations and the insights stay internal, it's likely QI.",
+                options: [
+                    { 
+                        label: "Research - We want to create knowledge others can use/publish", 
+                        next: "human_centered", 
+                        summary: "Type: Research", 
+                        why: "Meets 45 CFR 46.102(l) definition as a systematic investigation for generalizable knowledge." 
+                    },
+                    { 
+                        label: "Quality Improvement - We're improving our local systems only", 
+                        next: "qi_deep_dive", 
+                        summary: "Type: Quality Improvement", 
+                        why: "Intended for institutional operations or local care optimization." 
+                    }
+                ]
+            },
+            qi_deep_dive: {
+                question: "Quality Improvement Assessment - Let's Verify Together",
+                info: "QI projects must meet ALL of these criteria to avoid IRB review. We'll walk through each one carefully. If even ONE doesn't apply, your project is actually research requiring IRB oversight. This protects both you and your institution.",
+                encouragement: "Take your time with these - being honest here prevents problems later. Many projects start as genuine QI but evolve into research as teams realize the broader value of their findings. There's no wrong answer, just the truthful one.",
+                tip: "The 'QI test': If a journalist asked to write about your findings, or another hospital wanted to implement your approach, would you be excited to share? If YES, it's probably research. True QI is focused on fixing YOUR local problems.",
+                details: [
+                    { 
+                        title: "Ask Yourself These Questions Honestly:", 
+                        content: "1. Purpose: Am I ONLY trying to improve OUR processes, or am I also trying to prove something that could help the field?\n\n2. Design: Is this truly adapting to OUR local context, or am I following a fixed research protocol to test a hypothesis?\n\n3. Intent to Share: Even if I'm not required to publish, would I WANT to share these findings at conferences or in journals?\n\n4. Beneficiary: Is the primary beneficiary MY institution's operations, or is it the broader scientific community?\n\n5. Testing vs. Implementing: Am I TESTING whether something works (research) or IMPLEMENTING a known best practice (QI)?" 
+                    },
+                    { 
+                        title: "Common QI-to-Research Triggers:", 
+                        content: "• Multi-site collaboration (if other sites want your approach, it's generalizable)\n• Hypothesis testing or comparative effectiveness evaluation\n• Creating new algorithms or tools others could use\n• Systematic data collection beyond what's needed for local improvement\n• Plan to publish findings (even 'maybe later')\n• Testing unproven interventions\n• Control groups or randomization" 
+                    },
+                    {
+                        title: "The Medical Device Complication:",
+                        content: "CRITICAL: If you're developing an AI tool that will diagnose, treat, or prevent disease - even if you call it 'QI' - it's a medical device requiring FDA consideration. You CANNOT bypass device regulations by claiming QI status. Intended use determines device status, not your project label. This is a major compliance risk."
+                    }
+                ],
+                options: [
+                    { 
+                        label: "Confirmed - ALL QI criteria are met, purely local improvement", 
+                        next: "human_centered", 
+                        summary: "QI Path: Internal Use Only", 
+                        why: "Focus remains on institutional processes per standard of care, not developing generalizable theories. Must still comply with HIPAA and institutional policies." 
+                    },
+                    { 
+                        label: "Actually, we do want to generalize/share findings, OR the tool might be a medical device", 
+                        next: "human_centered", 
+                        summary: "QI Path: Actually Research", 
+                        why: "Intent to generalize, share findings, or develop a medical device shifts activity to Research requiring IRB review. Generalizable knowledge per 45 CFR 46.102(l), or medical device development per 21 USC 321(h), both trigger research oversight requirements." 
+                    }
+                ]
+            },
+            human_centered: {
+                question: "Is Your AI 'Human-Centered'?",
+                info: "Does your AI mimic, replace, or augment human decision-making or behavior? For example: clinical decision support, behavioral prediction, risk assessment, diagnosis assistance. If it's just optimizing servers or processing speed, it's technical infrastructure, not human-centered.",
+                encouragement: "This distinction helps us understand the ethical implications. AI that mimics human judgment needs more careful oversight than AI that just makes technical processes faster.",
+                tip: "Human-centered AI examples: Predicting patient readmission, recommending treatments, identifying at-risk individuals, or modeling human behavior. Not human-centered: Database optimization, image compression, or network routing.",
+                options: [
+                    { 
+                        label: "Yes - It mimics human decisions or models human behavior", 
+                        next: "human_subjects_check", 
+                        summary: "AI Type: Human-Centered", 
+                        why: "AI acts as a digital proxy for human decision-making or behavioral modeling." 
+                    },
+                    { 
+                        label: "No - It's purely technical/infrastructure optimization", 
+                        next: "technical_result", 
+                        summary: "AI Type: Technical", 
+                        why: "AI focus is non-human with no behavioral or health modeling." 
+                    }
+                ]
+            },
+            human_subjects_check: {
+                question: "Does This Involve Identifiable People?",
+                info: "This is about whether your data involves living individuals who could potentially be identified. Even if data is de-identified, modern AI can sometimes re-identify people by connecting data points across datasets (this is called 'triangulation risk').",
+                encouragement: "Privacy protection is crucial, and you're right to think carefully about this. The good news: if data is truly anonymized with no re-identification risk, it may not require full IRB review. But be careful - 'anonymous' is a high bar to meet.",
+                tip: "Data is NOT anonymous if: it includes direct identifiers (names, MRNs), small population sizes make individuals recognizable, or AI could link records across datasets. It IS anonymous if all identifiers are permanently removed and sample sizes are large enough to prevent re-identification.",
+                details: [
+                    {
+                        title: "IMPORTANT: Synthetic Data Is NOT Automatically Anonymous",
+                        content: "If you're using or planning to create SYNTHETIC DATA (artificially generated data that mimics real patient data), you CANNOT assume it's anonymous. Synthetic data can still carry re-identification risks if:\n\n• It was generated from identifiable source data without proper privacy guarantees\n• The synthetic data preserves rare combinations of features that could identify individuals\n• The generation method doesn't provide formal privacy protections (like differential privacy)\n• You haven't conducted formal re-identification risk assessments\n\nJust because data is 'synthetic' doesn't mean it's safe from re-identification. You need formal verification that your synthetic data generation method provides adequate privacy protection. If you're unsure, select 'Yes' below and your IRB can help you assess the risk."
+                    },
+                    {
+                        title: "When to Select 'Yes' (Identifiable or Re-ID Risk)",
+                        content: "Select 'Yes' if ANY of these apply:\n\n• Data includes any direct identifiers (names, dates, locations, IDs)\n• Working with small populations where individuals could be recognized\n• Using AI to analyze patterns that could link to individuals\n• Using SYNTHETIC DATA without formal privacy verification\n• Uncertain about re-identification risk\n• Data could be linked to other datasets to identify people\n\nWhen in doubt, select 'Yes' - your IRB can help assess the actual risk level."
+                    },
+                    {
+                        title: "When to Select 'No' (Truly Anonymous)",
+                        content: "ONLY select 'No' if ALL of these are true:\n\n• All direct identifiers permanently removed (not just masked)\n• No indirect identifiers that could enable re-identification\n• Large enough sample that individuals cannot be singled out\n• No rare combinations of characteristics\n• AI triangulation risk has been formally assessed and neutralized\n• If using synthetic data: formal privacy guarantees (like differential privacy) verified\n• Re-identification risk assessment has been conducted and documented\n\nThis is a high bar - most AI research involves some re-identification risk and should select 'Yes'."
+                    }
+                ],
+                options: [
+                    { 
+                        label: "Yes - Data involves identifiable people, has re-identification risk, OR uses synthetic data without formal privacy verification", 
+                        next: "risk_assessment", 
+                        summary: "Status: Human Subjects Research", 
+                        why: "Activity involves living individuals and data is identifiable, carries re-identification risk (per 45 CFR 46.102(e)), or uses synthetic data without verified privacy protections." 
+                    },
+                    { 
+                        label: "No - Truly anonymous with verified privacy protections and no realistic re-identification risk", 
+                        next: "not_hsr_result", 
+                        summary: "Status: Not Human Subjects", 
+                        why: "Does not involve identifiable individuals; re-identification risk has been formally assessed and neutralized. If synthetic data is used, formal privacy guarantees have been verified." 
+                    }
+                ]
+            },
+            risk_assessment: {
+                question: "What Stage Is Your Research In?",
+                info: "This final step determines your review pathway. Stage 1 is algorithm development using existing data. Stage 2 is 'off-line' validation on new data. Stage 3 is 'live deployment' where AI outputs directly affect patient care in real-time.",
+                encouragement: "You're almost there! Understanding your stage helps match you with the right level of review - we want sufficient oversight without unnecessary burden.",
+                tip: "IMPORTANT: Only Stage 1 (clinical association with existing data) typically qualifies for Expedited review. Stage 2 validation CAN be Expedited IF it's not a medical device AND the overall study is minimal risk. Medical device validation requires Full Board for SR/NSR determination even if testing is off-line.",
+                options: [
+                    { 
+                        label: "Stage 1 - Algorithm development/clinical association (existing data)", 
+                        next: "expedited_result", 
+                        summary: "Review Path: Likely Expedited", 
+                        why: "Stage 1 algorithm development using existing data with minimal risk qualifies for Expedited review under 45 CFR 46.110, provided no greater-than-minimal-risk data collection methods." 
+                    },
+                    { 
+                        label: "Stage 2 - Performance validation (off-line, Medical Device)", 
+                        next: "full_board_result", 
+                        summary: "Review Path: Full Board Required for SR/NSR", 
+                        why: "Stage 2 validation of a medical device requires Full Board review for SR/NSR determination per 21 CFR 812, even when testing is off-line. The device's intended design and function triggers this requirement." 
+                    },
+                    { 
+                        label: "Stage 2 - Performance validation (off-line, Non-Device)", 
+                        next: "stage2_minimal_risk_check", 
+                        summary: "Review Path: Depends on Risk Level", 
+                        why: "Stage 2 validation for non-device AI requires risk assessment. Expedited possible if minimal risk, but any greater-than-minimal risk element requires Full Board." 
+                    },
+                    { 
+                        label: "Stage 3 - Real-world clinical deployment affecting patient care", 
+                        next: "full_board_result", 
+                        summary: "Review Path: Full Board Required", 
+                        why: "Stage 3 real-world integration requires Full Board review as AI outputs influence actual patient care decisions per 21 CFR 812 and 45 CFR 46." 
+                    }
+                ]
+            },
+            stage2_minimal_risk_check: {
+                question: "Stage 2 Risk Level Assessment",
+                info: "For Stage 2 validation (non-device AI), we need to assess overall study risk. The key question: Are ALL aspects of your study minimal risk, including how you collect/access data and how you validate the AI?",
+                encouragement: "Minimal risk means the probability and magnitude of harm are no greater than what people encounter in daily life or during routine exams. If you're just running algorithms on existing data with proper security, that's usually minimal risk.",
+                tip: "Greater-than-minimal risk triggers: Collecting new biological specimens, interviewing people about sensitive topics, accessing data requiring special approvals, any potential for psychological harm. If ANY element is greater than minimal risk, Full Board is required.",
+                options: [
+                    { 
+                        label: "Yes - ALL aspects are minimal risk", 
+                        next: "expedited_result", 
+                        summary: "Stage 2: Expedited Review", 
+                        why: "Stage 2 non-device validation with minimal risk across all study elements qualifies for Expedited review per 45 CFR 46.110." 
+                    },
+                    { 
+                        label: "No - At least one element is greater than minimal risk", 
+                        next: "full_board_result", 
+                        summary: "Stage 2: Full Board Required", 
+                        why: "Any greater-than-minimal-risk element in study design requires Full Board review per 45 CFR 46.110 limitations." 
+                    }
+                ]
+            },
+            
+            // RESULT BLOCKS
+            ci_result: { 
+                conclusion: true, 
+                result: { 
+                    title: "Stage 3: FDA Clinical Investigation",
+                    badge: "Full Board Review Required",
+                    celebration: "Excellent! You've Mapped Your Path",
+                    why_final: "Your project is a formal FDA Clinical Investigation because you're testing an AI 'test article' for safety and effectiveness in humans. This is serious, important work that requires the highest level of review.\n\nWhat this means: You'll need Full Board review and a formal risk determination (Significant Risk vs. Non-Significant Risk). This might sound daunting, but it's actually your 'regulatory passport' - if the board determines your device is Non-Significant Risk (NSR), you can proceed without a formal FDA application.\n\nGood news: If you can shift to 'off-line' validation first (Stage 1 or 2), you may qualify for a faster Expedited review pathway to start.",
+                    next_steps: "Schedule a pre-review consultation with your IRB. Prepare your protocol with clear safety monitoring plans. Consider starting with retrospective validation (Stage 1-2) before prospective testing (Stage 3)."
+                } 
+            },
+            
+            technical_result: { 
+                conclusion: true, 
+                result: { 
+                    title: "Technical Infrastructure Path",
+                    badge: "Not Human Subjects Research",
+                    celebration: "Great News - Streamlined Path Ahead!",
+                    why_final: "Your AI project focuses on technical optimization rather than human decision-making or health outcomes. This means it falls outside the scope of human subjects research regulations (45 CFR 46).\n\nWhat this means: You don't need IRB review for human subjects protection, though you should still follow your institution's standard IT governance and data security policies.\n\nThis is a common scenario for infrastructure AI - you're optimizing systems, not making clinical decisions. Much simpler regulatory pathway!",
+                    next_steps: "Confirm with your IT governance team. Document your data security measures. Verify you're complying with institutional policies for data use."
+                } 
+            },
+            
+            not_hsr_result: { 
+                conclusion: true, 
+                result: { 
+                    title: "Privacy Partnership Path",
+                    badge: "Not Human Subjects Research",
+                    celebration: "Wonderful - You've Done Strong Privacy Protection!",
+                    why_final: "While your work qualifies as Research (because you're generating generalizable knowledge), it doesn't involve 'human subjects' because your data is truly de-identified and the risk of re-identification has been neutralized.\n\nWhat this means: You've successfully protected privacy such that modern AI triangulation can't re-identify individuals. This is exactly what good research ethics aims for - advancing science while protecting people.\n\nRecommendation: Get an official 'Not Human Subjects Research' determination letter from your IRB for your records. This documents your due diligence and protects you if questions arise later.",
+                    next_steps: "Submit a Not HSR determination form to your IRB. Document your de-identification methods. Maintain your data security protocols."
+                } 
+            },
+            
+            expedited_result: { 
+                conclusion: true, 
+                result: { 
+                    title: "Expedited Review Pathway",
+                    badge: "Minimal Risk - Streamlined Review",
+                    celebration: "Perfect - You've Earned the Fast Track!",
+                    why_final: "Your research qualifies for Expedited review because you're in Stage 1 (algorithm development) OR Stage 2 with non-device AI where all study elements are minimal risk. The risk level is no greater than what people experience in routine life or clinical exams.\n\nWhat this means: One or two IRB reviewers can approve your project administratively, usually within 2-4 weeks. This is much faster than Full Board review, which can take months. You've chosen the smart development path - validate thoroughly before deployment.\n\nIMPORTANT: If you later move to Stage 3 (live deployment) OR if you're validating a medical device, you'll need Full Board review and an NSR determination. Think of this as a staged approach that matches oversight intensity to risk and development phase.",
+                    next_steps: "Submit your protocol for Expedited review. Clearly describe your stage (1 or 2) and methods. If Stage 2, confirm non-device status and minimal risk. Plan your Stage 3 transition strategy in advance if clinical deployment is the goal."
+                } 
+            },
+            
+            full_board_result: { 
+                conclusion: true, 
+                result: { 
+                    title: "Full Board Strategic Review",
+                    badge: "Stage 3 or Device Validation",
+                    celebration: "You're Ready for Comprehensive Oversight!",
+                    why_final: "Your project requires Full Board review because EITHER: (1) you're in Stage 3 where AI outputs will directly influence real-world patient care decisions, OR (2) you're validating a tool that might meet the FDA medical device definition in Stage 2.\n\nWhat this means: Your full IRB committee will review your protocol at a convened meeting per 21 CFR 56.108. When validating a potential medical device (Stage 2 or 3), ONLY the full board can grant the critical 'Significant Risk (SR) vs. Non-Significant Risk (NSR) Determination' required by 21 CFR 812.3(m) and 812.20. This SR/NSR determination cannot be made through expedited review.\n\nRegulatory Framework: Your device development and testing must comply with:\n• 21 CFR Part 56 (IRB regulations - governing institutional review board composition, function, and operations)\n• 21 CFR Part 812 (Investigational Device Exemptions - IDE requirements, SR/NSR determinations, and study monitoring)\n• 21 CFR Part 820 (Quality System Regulation - design controls, validation, and documentation if moving toward commercialization)\n• 21 CFR Part 11 (Electronic Records - if using electronic systems for data capture, signatures, or record keeping)\n\nThe NSR determination is your golden ticket: It means you have an 'Abbreviated IDE' per 21 CFR 812.2(b) and can proceed without filing a formal FDA application - the IRB acts as the FDA's surrogate. This saves months compared to the full IDE process.\n\nImportant note: After the Full Board grants initial approval and makes the SR/NSR determination, the Board can vote per 21 CFR 56.110 to allow continuing review (amendments, annual renewals) to proceed via expedited process. But that initial review and device determination requires the full committee's expertise.\n\nThis is actually good news: The board brings collective expertise in clinical risk, ethics, and regulatory strategy. They'll help you strengthen your protocol and ensure you're properly validated (Stage 2 device) or deployment-ready (Stage 3). Many institutions complete Full Board review in 4-8 weeks with good preparation.",
+                    next_steps: "Schedule a pre-submission meeting with IRB staff. Prepare comprehensive risk analysis and device classification rationale with the tool's intended design and function clearly documented. Develop your monitoring and stopping rules per 21 CFR 812. If Stage 3, consider a pilot phase to demonstrate safety before full deployment. If Stage 2 device, prepare validation plan with performance metrics, bias assessment, and explanation of the tool's intended use (who it's designed for, what context, what function). Begin planning for 21 CFR Part 820 design control requirements if commercialization is anticipated."
+                } 
+            }
+        };
+
+        let currentStep = 'start';
+        let history = [];
+        let logs = [];
+
+        function render() {
+            const app = document.getElementById('app');
+            const node = decisionTree[currentStep];
+            
+            if (!node) {
+                console.error("Error: Key not found: " + currentStep);
+                return;
+            }
+
+            if (node.conclusion) {
+                app.innerHTML = renderResult(node);
+                attachResultEventListeners();
+            } else {
+                app.innerHTML = renderQuestion(node);
+                attachQuestionEventListeners(node);
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderQuestion(node) {
+            const progress = Math.min((history.length/9)*100, 100);
+            const stepNumber = history.length + 1;
+            const totalSteps = 9;
+            
+            let html = `
+                <div class="progress-container">
+                    <div class="progress-label">
+                        <span>Question ${stepNumber} of ~${totalSteps}</span>
+                        <span>${Math.round(progress)}% Complete</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${progress}%"></div>
+                    </div>
+                </div>
+            `;
+            
+            if (node.encouragement) {
+                html += `
+                    <div class="encouragement-banner">
+                        <p><strong>👋 Friendly Reminder:</strong> ${node.encouragement}</p>
+                    </div>
+                `;
+            }
+            
+            html += `<div class="question-card">`;
+            html += `<h2 class="question-text">${node.question}</h2>`;
+            
+            if (node.info) {
+                html += `<div class="info-box"><p>${node.info}</p></div>`;
+            }
+            
+            if (node.details) {
+                node.details.forEach(d => {
+                    html += `
+                        <div class="details-section">
+                            <h3>${d.title}</h3>
+                            <p style="white-space:pre-wrap;">${d.content}</p>
+                        </div>
+                    `;
+                });
+            }
+            
+            html += `<div class="options-container">`;
+            node.options.forEach((opt, idx) => {
+                html += `<button class="option-button" data-option-index="${idx}">${opt.label}</button>`;
+            });
+            html += `</div>`;
+            
+            if (node.tip) {
+                html += `
+                    <div class="helper-tip">
+                        <div class="helper-tip-header">Need a hint?</div>
+                        <p>${node.tip}</p>
+                    </div>
+                `;
+            }
+            
+            html += `</div>`; // Close question-card
+            
+            html += `<div class="nav-buttons">`;
+            if (history.length > 0) {
+                html += `<button class="nav-btn back-btn" id="back-btn">← Go Back</button>`;
+            }
+            html += `<button class="nav-btn restart-btn" id="restart-btn">Start Over</button>`;
+            html += `</div>`;
+            
+            return html;
+        }
+
+        function attachQuestionEventListeners(node) {
+            const optionButtons = document.querySelectorAll('.option-button');
+            optionButtons.forEach((btn, idx) => {
+                btn.addEventListener('click', () => {
+                    const opt = node.options[idx];
+                    handleChoice(opt.next, opt.summary || opt.label, opt.why || '');
+                });
+            });
+
+            const backBtn = document.getElementById('back-btn');
+            if (backBtn) {
+                backBtn.addEventListener('click', handleBack);
+            }
+
+            const restartBtn = document.getElementById('restart-btn');
+            if (restartBtn) {
+                restartBtn.addEventListener('click', handleRestart);
+            }
+        }
+
+        function attachResultEventListeners() {
+            const downloadBtn = document.querySelector('.download-btn');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', genPDF);
+            }
+
+            const restartBtn = document.getElementById('restart-btn');
+            if (restartBtn) {
+                restartBtn.addEventListener('click', handleRestart);
+            }
+        }
+
+        function renderResult(node) {
+            const res = node.result;
+            return `
+                <div id="pdf-area">
+                    <div class="result-hero">
+                        <div class="result-badge">${res.badge}</div>
+                        <h1>${res.title}</h1>
+                        <p>Here's what this means for your project and your next steps forward</p>
+                    </div>
+                    
+                    <div class="celebration-box">
+                        <h4>🎉 ${res.celebration}</h4>
+                        <p>You've successfully navigated the regulatory landscape. Below you'll find your personalized roadmap based on the Eto 3-Stage Framework.</p>
+                    </div>
+                    
+                    <div class="section-card">
+                        <h3>What This Means For You</h3>
+                        <p style="font-size: 1.1em; color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-primary')}; line-height: 1.8; white-space: pre-wrap;">${res.why_final}</p>
+                    </div>
+                    
+                    ${res.next_steps ? `
+                    <div class="section-card">
+                        <h3>Your Next Steps</h3>
+                        <p style="font-size: 1.05em; color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-primary')}; line-height: 1.8;">${res.next_steps}</p>
+                    </div>
+                    ` : ''}
+                    
+                    <div class="section-card">
+                        <h3>Your Decision Journey (For Your Records)</h3>
+                        <p style="margin-bottom: 15px; color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')};">Here's how we reached this conclusion, with full regulatory citations:</p>
+                        <table class="summary-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 25%">Question</th>
+                                    <th style="width: 30%">Your Answer</th>
+                                    <th style="width: 45%">Regulatory Logic & Citations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${logs.map(l => `
+                                    <tr>
+                                        <td>${escapeHtml(l.step)}</td>
+                                        <td><strong>${escapeHtml(l.selection)}</strong></td>
+                                        <td>${escapeHtml(l.why)}</td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                    <div class="help-callout">
+                        <strong>📚 Understanding the SR/NSR Determination</strong>
+                        <p>If you reached Full Board review, you'll hear about "NSR" (Non-Significant Risk). This is a special designation that works like an abbreviated FDA approval. If your IRB determines your device is NSR, you can proceed with your research without filing a full Investigational Device Exemption (IDE) with the FDA. The IRB essentially acts as FDA's representative, giving you a faster path to deployment while maintaining rigorous safety oversight. Think of it as your "regulatory passport" that unlocks clinical implementation.</p>
+                    </div>
+                </div>
+                
+                <div class="nav-buttons">
+                    <button class="nav-btn download-btn">📄 Download My Summary (PDF)</button>
+                    <button class="nav-btn restart-btn" id="restart-btn">🔄 Assess Another Project</button>
+                </div>
+            `;
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function handleChoice(next, selection, why) {
+            if (!decisionTree[currentStep].conclusion) {
+                logs.push({ 
+                    step: decisionTree[currentStep].question, 
+                    selection: selection, 
+                    why: why 
+                });
+            }
+            history.push(currentStep);
+            currentStep = next;
+            render();
+        }
+
+        function handleBack() { 
+            if (history.length > 0) { 
+                logs.pop(); 
+                currentStep = history.pop(); 
+                render(); 
+            } 
+        }
+
+        function handleRestart() { 
+            if (confirm('Are you sure you want to start over? This will clear your current progress.')) {
+                currentStep = 'start'; 
+                history = []; 
+                logs = []; 
+                render();
+            }
+        }
+
+        function genPDF() {
+            const element = document.getElementById('pdf-area');
+            const downloadBtn = document.querySelector('.download-btn');
+            
+            if (!element || !downloadBtn) {
+                console.error('PDF elements not found');
+                return;
+            }
+            
+            const originalText = downloadBtn.textContent;
+            downloadBtn.textContent = '⏳ Generating PDF...';
+            downloadBtn.disabled = true;
+            
+            // Check if html2pdf is loaded
+            if (typeof html2pdf === 'undefined') {
+                alert('PDF library is loading. Please try again in a moment.');
+                downloadBtn.textContent = originalText;
+                downloadBtn.disabled = false;
+                return;
+            }
+            
+            // Configure PDF options for better rendering
+            const opt = {
+                margin: [0.5, 0.5, 0.5, 0.5],
+                filename: 'AI_IRB_Assessment_Summary.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { 
+                    scale: 2,
+                    useCORS: true,
+                    letterRendering: true,
+                    scrollY: 0,
+                    scrollX: 0
+                },
+                jsPDF: { 
+                    unit: 'in', 
+                    format: 'letter', 
+                    orientation: 'portrait',
+                    compress: true
+                },
+                pagebreak: { mode: ['avoid-all', 'css', 'legacy'] }
+            };
+            
+            html2pdf().set(opt).from(element).save().then(() => {
+                downloadBtn.textContent = originalText;
+                downloadBtn.disabled = false;
+            }).catch((error) => {
+                console.error('PDF generation error:', error);
+                alert('There was an error generating the PDF. Please try again.');
+                downloadBtn.textContent = originalText;
+                downloadBtn.disabled = false;
+            });
+        }
+
+        // Initialize - wait for libraries to load
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', render);
+        } else {
+            render();
+        }
+    </script>
+</body>
+</html>
