@@ -2,7 +2,7 @@
 
 **Interactive regulatory guidance tool for AI human subjects research**
 
-A comprehensive, user-friendly web application that guides researchers and IRB professionals through the complex regulatory landscape of AI research oversight. Built on the Eto 3-Stage Framework, adopted by 23+ institutions.
+A comprehensive, user-friendly web application that guides researchers and IRB professionals through the complex regulatory landscape of AI research oversight. Built on the 3-Stage Framework, adopted by 23+ institutions.
 
 ## Overview
 
@@ -113,7 +113,7 @@ Addresses the common misconception that synthetic data is automatically anonymou
 
 ## About TechInHSR LLC
 
-TechInHSR LLC provides AI research ethics consulting, IRB training, and regulatory strategy for digital health. Founded by Tamiko Eto, MA, CIP, with over 20 years of IRB leadership experience across major institutions including Mayo Clinic.
+TechInHSR LLC provides AI research ethics consulting, IRB training, and regulatory strategy for AI digital health. Founded by Tamiko Eto, MA, CIP, with over 20 years of IRB leadership experience across major institutions across the U.S.
 
 **Services:**
 - AI research ethics consulting
@@ -135,7 +135,7 @@ If you use this tool in your research or institutional processes, please cite:
 
 ```
 Eto, T. (2026). AI Research Navigator: Interactive IRB Decision Tree Tool. 
-TechInHSR LLC. https://github.com/TechInHSR/ai-research-navigator
+TechInHSR LLC. https://github.com/etotamiko-lab/ai-research-navigator
 ```
 
 ## Version History
@@ -161,7 +161,7 @@ This tool incorporates regulatory guidance from:
 - 21 CFR Parts 56, 812, 820, 11
 - 21 USC 321(h) (Medical Device Definition)
 
-Developed with insights from 23+ institutions that have adopted the Eto 3-Stage Framework for AI human subjects research oversight.
+Developed with insights from 23+ institutions that have adopted the 3-Stage Framework for AI human subjects research oversight.
 
 ---
 
