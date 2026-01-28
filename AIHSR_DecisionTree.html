@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Research Navigator - Find Your Path with Confidence</title>
+    <title>AI HSR Research Navigator - Does This AI Project Need IRB Review? </title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -570,7 +570,7 @@
         <div id="app" class="content"></div>
         <div class="footer">
             <p>Created with care by <strong>TechInHSR LLC</strong> | Tamiko Eto, MA, CIP</p>
-            <p style="margin-top: 10px; font-size: 0.85em;">Empowering researchers with clarity and confidence since 2004</p>
+            <p style="margin-top: 10px; font-size: 0.85em;">Empowering IRBs and AI researchers with clarity and confidence since 2004</p>
         </div>
     </div>
 
@@ -578,22 +578,22 @@
         const decisionTree = {
             start: {
                 question: "Let's Find Your Path Together",
-                info: "Think of this as a conversation, not a test. We'll walk through a few questions to help you understand exactly what type of review your AI project needs. No regulatory jargon overload - just clear, supportive guidance.",
-                encouragement: "You're already ahead of the game by being here. Most researchers feel uncertain about IRB requirements for AI - that's completely normal. Let's demystify this together.",
-                tip: "This tool uses the Eto 3-Stage Framework - a structured approach that's been adopted by 23+ institutions. You're in good hands.",
+                info: "Think of this as a conversation, not a test. We'll walk through a few questions to help you understand exactly what type of review your AI project needs. No regulatory jargon overload. Just clear, supportive guidance.",
+                encouragement: "You're already ahead of the game by being here. Most researchers feel uncertain about IRB requirements for AI. That's completely normal. Let's demystify this together.",
+                tip: "This tool uses the 3-Stage Framework, a structured approach that's been adopted by 23+ institutions. You're in good hands.",
                 options: [{ label: "I'm ready - let's start", next: "clinical_investigation" }]
             },
             clinical_investigation: {
-                question: "Are You Testing an Investigational AI Device?",
+                question: "Are You Testing an Investigational AI Tool?",
                 info: "In plain English: Are you running an experiment to find out if your AI tool is safe and effective for a specific medical use? This is what FDA calls a 'Clinical Investigation.'",
-                encouragement: "Don't worry if you're unsure - we'll help you figure it out. The key question is: Are you testing whether the AI works as intended, or are you using an already-validated AI for other purposes?",
-                tip: "If you're just analyzing existing data or using FDA-cleared tools in standard ways, the answer is likely 'No.' Clinical Investigation specifically means you're proving safety/effectiveness.",
+                encouragement: "Don't worry if you're unsure. We'll help you figure it out. The key question is: Are you testing whether the AI works as intended, or are you using an already-validated AI for other purposes?",
+                tip: "If you're just analyzing existing data, or in early development, or using FDA-cleared tools in approved ways, the answer is likely 'No.' Clinical Investigation specifically means you're proving safety/effectiveness.",
                 options: [
                     { 
                         label: "Yes - We're testing if our AI is safe/effective for a specific use", 
                         next: "ci_result", 
                         summary: "Status: FDA Clinical Investigation", 
-                        why: "Triggers 21 CFR 50.3(c) & 56.102(c) as an experiment involving a test article and human subjects." 
+                        why: "Triggers 21 CFR 56 and 21 CFR 812, as an experiment involving a test article and human subjects." 
                     },
                     { 
                         label: "No - We're not testing safety/effectiveness", 
@@ -605,17 +605,17 @@
             },
             clinical_evaluation: {
                 question: "Are You Establishing Clinical Association (Stage 1)?",
-                info: "Stage 1 is about discovering whether there's a meaningful medical connection. Are you trying to prove that what your AI detects or predicts actually relates to a real health condition? This is pure algorithm development using existing data - you're not testing the tool on new patients yet.",
-                encouragement: "Stage 1 is the foundation - you're building the evidence that your AI idea has clinical merit. Think of it like asking: 'Can we even predict this thing?' before worrying about how accurate the prediction is.",
+                info: "Stage 1 is about discovering whether there's a meaningful medical connection. Are you trying to prove that what your AI detects or predicts actually relates to a real health condition? This is pure algorithm development using existing data. You're not testing the tool on new patients yet.",
+                encouragement: "Stage 1 is the foundation. You're building the evidence that your AI idea has clinical merit. Think of it like asking: 'Can we even predict this thing?' before worrying about how accurate the prediction is.",
                 tip: "Stage 1 examples: Training an algorithm on existing medical records to see if certain patterns predict diabetes. Testing whether retinal scan features correlate with cardiovascular risk. This is NOT about deploying the tool - just proving the concept has clinical validity.",
                 details: [
                     { 
                         title: "What is Clinical Association?", 
-                        content: "You're establishing that there's a valid medical link between your AI's output and a real clinical condition. You're using existing, authorized data to train and initially test your algorithm. No new patient interactions yet." 
+                        content: "You're establishing that there's a valid medical link between your AI's output and a real clinical condition. You're using existing, authorized and/or consented-for data to train and initially test your algorithm. No new patient impact yet. No influence on clinical decision-making." 
                     },
                     { 
                         title: "Stage 1 vs. Later Stages", 
-                        content: "Stage 1: 'Can we predict X from Y?' (algorithm development, existing data)\nStage 2: 'How well does it perform?' (validation on new data, may involve medical device determination)\nStage 3: 'Does it work in real clinical use?' (live deployment, affects patient care)" 
+                        content: "Stage 1: 'Can we predict X from Y?' (algorithm development, existing data)\nStage 2: 'How well does it perform?' (validation on new data, may involve medical device determination by the IRB)\nStage 3: 'Does it work in real clinical emvironments?' (live deployment, affects patient care)" 
                     }
                 ],
                 options: [
@@ -623,29 +623,29 @@
                         label: "Yes - We're establishing clinical association (Stage 1)", 
                         next: "research_definition", 
                         summary: "Focus: Stage 1 - Clinical Association", 
-                        why: "Stage 1 focuses on algorithm development and establishing clinical association using existing data per the Eto Framework." 
+                        why: "Stage 1 focuses on algorithm development and establishing clinical association using existing data." 
                     },
                     { 
                         label: "No - We're past Stage 1 (validation or deployment)", 
                         next: "stage2_device_check", 
                         summary: "Focus: Beyond Stage 1", 
-                        why: "Activity has moved beyond initial clinical association discovery." 
+                        why: "Activity has moved beyond initial clinical association and discovery." 
                     }
                 ]
             },
             stage2_device_check: {
                 question: "Are You Validating Performance in Stage 2?",
-                info: "Stage 2 is where things get more complex. You're now testing how well your AI performs on NEW data it hasn't seen before. The critical question is about the TOOL'S INTENDED DESIGN AND FUNCTION - not how you're using it in this specific research project.",
-                encouragement: "The medical device question isn't about being in trouble - it's about finding the right regulatory pathway. If your AI tool is designed to influence clinical decisions, FDA wants to ensure it's safe and effective. This is patient protection, not bureaucracy.",
-                tip: "CRITICAL DISTINCTION: 'Intended use' means HOW THE TOOL IS DESIGNED TO FUNCTION, not how you're using it in your study. Ask: What is this tool designed for? Who is it designed for? What environment is it designed for? If it's patient-facing, it's automatically a device.",
+                info: "Stage 2 is where things get more complex. You're now testing how well your AI performs on NEW data it hasn't seen before. The critical question is about the TOOL'S INTENDED USE (how it was designed to work, on whom, and in what scenarios) - not how you're using it in this specific research project.",
+                encouragement: "The medical device question isn't about being in trouble - it's about finding the right regulatory pathway. If your AI tool is designed to influence clinical decisions, FDA may want to ensure it's safe and effective. This is patient protection, not bureaucracy.",
+                tip: "CRITICAL DISTINCTION: 'Intended use' means HOW THE TOOL IS DESIGNED TO BE USED ONCE YOU DEVELOP IT, ON WHOM, AND IN WHAT SCENARIO, not how you're using it in your study. Ask: What is this tool designed for? Who is it designed for? What environment is it designed for? If it's patient-facing, it's automatically a device unless it meets specific General Wellness criteria.",
                 details: [
                     { 
                         title: "What Is 'Intended Use'?", 
-                        content: "Intended use = the tool's DESIGN purpose and function:\n\n• WHO is it designed for? (Clinicians? Patients? Researchers?)\n• WHAT CONTEXT? (Clinical care? Research only? Administrative?)\n• WHAT FUNCTION? (Diagnose? Treat? Prevent? Predict? Analyze?)\n\nIMPORTANT: If the tool is designed to be PATIENT-FACING (used by or on patients), it's automatically a medical device requiring SR/NSR determination.\n\nThis is NOT about how you're using the tool in your specific research project - it's about what the tool itself is fundamentally designed to do." 
+                        content: "Intended use = the tool's DESIGN purpose and function:\n\n• WHO is it designed for? (Clinicians? Patients? Researchers?)\n• WHAT CONTEXT? (Clinical care? Research only? Administrative?)\n• WHAT FUNCTION? (Diagnose? Treat? Prevent? Mitigate? Predict? Analyze?)\n\nIMPORTANT: If the tool is designed to be PATIENT-FACING (used by or on patients), it's automatically a medical device requiring SR/NSR determination unless it meets specific General Wellness criteria.\n\nThis is NOT about how you're using the tool in your specific research project - it's about what the tool itself is fundamentally designed to do." 
                     },
                     { 
-                        title: "Medical Device Definition (21 USC 321(h)) & FDA 2026 CDS Guidance", 
-                        content: "A tool is a medical device if its DESIGN PURPOSE is to diagnose, treat, cure, mitigate, or prevent disease. To determine this, apply the FDA's 4-Criteria Test from the 2026 CDS guidance. If your tool FAILS any criterion, it's a device:\n\nCRITERION 1: Does it acquire, process, or analyze medical images, IVD signals, or patterns from signal acquisition systems?\n• DEVICE: Tool analyzes radiology images to detect tumors\n• DEVICE: Tool processes ECG signals to identify arrhythmias\n• NOT device: Tool displays lab results without analysis\n\nCRITERION 2: Does it display/analyze information normally discussed between HCPs or with patients?\n• NOT device: Displays standard vital signs and lab values\n• DEVICE: Generates novel risk scores not typically discussed\n\nCRITERION 3: Does it provide patient-specific recommendations to HCPs?\n• DEVICE: Recommends specific drug and dosage for this patient\n• DEVICE: Provides time-critical alerts (e.g., 'sepsis risk in next 6 hours')\n• NOT device (enforcement discretion): Suggests single clinically appropriate antibiotic when only one option meets guidelines\n\nCRITERION 4: Can HCPs independently review the basis without primarily relying on it?\n• DEVICE: Black-box AI with no explanation of how conclusion was reached\n• DEVICE: Provides recommendation requiring immediate action without review time\n• NOT device: Transparent logic with sufficient information for independent verification\n\nCLEAR DEVICE EXAMPLES:\n• Algorithm DESIGNED to predict sepsis risk for triggering clinical response protocols → FAILS Criterion 3 (time-critical, specific output)\n• Tool DESIGNED to analyze chest X-rays and recommend diagnosis → FAILS Criterion 1 (processes medical images)\n• Software DESIGNED for patients to assess symptoms and receive treatment guidance → FAILS Criterion 3 (patient-facing = device) + likely Criterion 4 (patients cannot independently review clinical basis)\n\nCLEAR NON-DEVICE EXAMPLES:\n• Dashboard DESIGNED for researchers to study population health patterns → Passes all criteria (not patient-specific recommendations)\n• Tool DESIGNED to display standard clinical guidelines based on diagnosis code → Passes all criteria (supports HCP with established information)\n• Software DESIGNED for hospital operations/workflow optimization → Passes all criteria (not clinical decision-making)" 
+                        title: "Medical Device and SaMD Definition (201(h)(1)), IMDRF 2013 Guidance ( & FDA 2026 CDS Guidance", 
+                        content: "A tool is a medical device if its DESIGN PURPOSE is to diagnose, monitor, treat, cure, mitigate, alleviate, or prevent disease. To determine this, apply the FDA's 4-Criteria Test from the 2026 CDS guidance. If your tool FAILS any criterion, it's a device:\n\nCRITERION 1: Does it acquire, process, or analyze medical images, IVD signals, or patterns from signal acquisition systems?\n• DEVICE: Tool analyzes radiology images to detect tumors\n• DEVICE: Tool processes ECG signals to identify arrhythmias\n• NOT device: Tool displays lab results without analysis\n\nCRITERION 2: Does it display/analyze information normally discussed between healthcare providers or with patients?\n• NOT device: Displays standard vital signs and lab values\n• DEVICE: Generates novel risk scores\n\nCRITERION 3: Does it provide patient-specific recommendations to healthcare providers?\n• DEVICE: Recommends specific drug or dosage for this patient\n• DEVICE: Provides time-critical alerts (e.g., 'sepsis risk in next 6 hours')\n• NOT device (enforcement discretion): Suggests single clinically appropriate antibiotic when only one option meets guidelines\n\nCRITERION 4: Can healthcare providers independently review the basis without primarily relying on it?\n• DEVICE: Black-box AI with no explanation of how conclusion was reached\n• DEVICE: Provides recommendation requiring immediate action without review time\n• NOT device: Transparent logic with sufficient information for independent verification\n\nCLEAR DEVICE EXAMPLES:\n• Algorithm DESIGNED to predict sepsis risk for triggering clinical response protocols → FAILS Criterion 3 (time-critical, specific output)\n• Tool DESIGNED to analyze chest X-rays and recommend diagnosis → FAILS Criterion 1 (processes medical images)\n• Software DESIGNED for patients to assess symptoms and receive treatment guidance → FAILS Criterion 3 (patient-facing = device) + likely Criterion 4 (patients cannot independently review clinical basis)\n\nCLEAR NON-DEVICE EXAMPLES:\n• Dashboard DESIGNED for researchers to study population health patterns → Passes all criteria (not patient-specific recommendations)\n• Tool DESIGNED to display standard clinical guidelines based on diagnosis code → Passes all criteria (supports healthcare provider with established information)\n• Software DESIGNED for hospital operations/workflow optimization → Passes all criteria (not clinical decision-making)" 
                     },
                     { 
                         title: "Why This Matters for Stage 2 Validation", 
@@ -653,7 +653,7 @@
                     },
                     { 
                         title: "The QI Loophole Problem", 
-                        content: "Some institutions try to call device development 'Quality Improvement' to avoid FDA oversight. This is problematic: the tool's intended design and function determines device status regardless of whether you call the development project QI or research. Creating a clinical diagnostic tool and deploying it without proper validation exposes patients to risk and institutions to liability." 
+                        content: "Some institutions try to call device development 'Quality Improvement' to avoid IRB and FDA oversight. This is problematic: the tool's INTENDED USE determines device status regardless of whether you call the development project QI or research. Creating a clinical diagnostic tool and deploying it without proper validation exposes patients to risk and institutions to liability." 
                     }
                 ],
                 options: [
@@ -661,67 +661,67 @@
                         label: "Yes - This tool is DESIGNED for clinical use (diagnosis/treatment/prevention/mitigation/cure)", 
                         next: "device_validation_path", 
                         summary: "Stage 2: Medical Device Validation", 
-                        why: "Tool's intended design and function makes this a medical device under 21 USC 321(h). Validating a potential device requires IRB SR/NSR determination via Full Board review, regardless of how it's used in this specific research project." 
+                        why: "Tool's intended use makes this a medical device under 201(h)(1). Validating a potential device requires IRB SR/NSR determination via Full Board review (unless eligible for an IDE-exemption), regardless of how it's used in this specific research project." 
                     },
                     { 
-                        label: "No - This tool is NOT designed for clinical decision-making", 
+                        label: "No - This tool is NOT designed to support clinical decision-making", 
                         next: "research_definition", 
                         summary: "Stage 2: Non-Device Validation", 
-                        why: "Tool is not designed to diagnose, treat, prevent, or mitigate disease, so not a medical device. Standard research oversight applies." 
+                        why: "Tool is not designed to support clinical decision-making or to diagnose, treat, prevent, or mitigate disease or condition, so not a medical device. Standard research oversight applies." 
                     }
                 ]
             },
             device_validation_path: {
                 question: "Medical Device Validation (Stage 2) - Understanding Your Path",
-                info: "Because your tool is designed for clinical use, you're validating a medical device. When validating a tool that might meet the FDA device definition, the IRB MUST make a formal Significant Risk (SR) vs. Non-Significant Risk (NSR) determination. This determination can ONLY be made by a convened Full Board - not by expedited review.",
+                info: "Because your tool is designed for clinical decision-making, you're validating a medical device. When validating a tool that might meet the FDA device definition, the IRB MUST make a formal Significant Risk (SR) vs. Non-Significant Risk (NSR) determination (unless the tool is eligible for an IDE-exemption). This determination can ONLY be made by a convened Full Board - not by expedited review.",
                 encouragement: "This might feel like extra burden, but it's actually your regulatory passport. An NSR determination from your Full Board means you can proceed without filing a full Investigational Device Exemption (IDE) with FDA. The IRB acts as FDA's surrogate, which speeds things up considerably compared to a formal FDA application process.",
-                tip: "Good news: After the Full Board grants initial approval and makes the SR/NSR determination, the Board can vote to allow CONTINUING review (subsequent amendments, annual renewals) to be handled via expedited process. But that initial SR/NSR determination? That requires the full committee.",
+                tip: "Good news: After the Full Board grants initial approval, if they make an NSR determination, the Board can vote to allow CONTINUING review (annual renewals) to be handled via expedited process. But that initial NSR determination requires the full committee.",
                 options: [
                     { 
                         label: "Continue to determine if this is Research or QI", 
                         next: "research_definition", 
                         summary: "Stage 2: Device Validation Path - Full Board Required", 
-                        why: "Validating a tool that might meet FDA device definition requires IRB SR/NSR determination per 21 CFR 812. Only a convened Full Board can make this determination, even for off-line validation. Continuing review may be expedited after initial Full Board approval if the Board votes to allow it." 
+                        why: "Validating a tool that might meet FDA device definition requires IRB SR/NSR determination per 21 CFR 812 (unless the tool meets specific IDE-exemption criteria). Only a convened Full Board can make an SR/NSR determination, even for off-line validation. Continuing review may be expedited after initial Full Board approval if the Board votes to allow it." 
                     }
                 ]
             },
             research_definition: {
                 question: "Is This 'Research' or 'Local Quality Improvement'?",
-                info: "Here's the fundamental distinction: Research aims to create new generalizable knowledge that others can use. Quality Improvement (QI) focuses on making your specific hospital or clinic work better - it's local and internal.",
-                encouragement: "This is one of the trickiest distinctions in research ethics, so don't feel bad if you're uncertain. The intent matters more than the methods. Ask yourself: Do I want to publish this or share findings externally?",
-                tip: "If you plan to publish findings, present at conferences, or help other institutions learn from your work, it's Research. If you're just trying to improve your own operations and the insights stay internal, it's likely QI.",
+                info: "Here's the fundamental distinction: Research aims to create new generalizable knowledge or information that others can use. Quality Improvement (QI) focuses on making your specific hospital or clinic work better - it's local and internal.",
+                encouragement: "This is one of the trickiest distinctions in research compliance, so don't feel bad if you're uncertain. The intent matters more than the methods. Ask yourself: Do I want to publish this or share findings externally?",
+                tip: "If you plan to publish findings, present at conferences, or help other institutions learn from your work, it's likely Research. If you're just trying to improve your own operations and the insights stay internal, it's likely QI.",
                 options: [
                     { 
-                        label: "Research - We want to create knowledge others can use/publish", 
+                        label: "Research - We want to create knowledge or information others can use/publish", 
                         next: "human_centered", 
                         summary: "Type: Research", 
-                        why: "Meets 45 CFR 46.102(l) definition as a systematic investigation for generalizable knowledge." 
+                        why: "Meets 45 CFR 46.102 definition as a systematic investigation for generalizable knowledge." 
                     },
                     { 
                         label: "Quality Improvement - We're improving our local systems only", 
                         next: "qi_deep_dive", 
                         summary: "Type: Quality Improvement", 
-                        why: "Intended for institutional operations or local care optimization." 
+                        why: "Intended for institutional operations or optimization." 
                     }
                 ]
             },
             qi_deep_dive: {
                 question: "Quality Improvement Assessment - Let's Verify Together",
-                info: "QI projects must meet ALL of these criteria to avoid IRB review. We'll walk through each one carefully. If even ONE doesn't apply, your project is actually research requiring IRB oversight. This protects both you and your institution.",
-                encouragement: "Take your time with these - being honest here prevents problems later. Many projects start as genuine QI but evolve into research as teams realize the broader value of their findings. There's no wrong answer, just the truthful one.",
+                info: "QI projects must meet ALL of these criteria to avoid IRB review. We'll walk through each one carefully. If even ONE doesn't apply, your project is likely research requiring IRB oversight. This protects both you and your institution.",
+                encouragement: "Take your time with these. Being honest here prevents problems later. Many projects start as genuine QI but evolve into research as teams realize the broader value of their findings. There's no wrong answer. The right answer is the truthful one.",
                 tip: "The 'QI test': If a journalist asked to write about your findings, or another hospital wanted to implement your approach, would you be excited to share? If YES, it's probably research. True QI is focused on fixing YOUR local problems.",
                 details: [
                     { 
                         title: "Ask Yourself These Questions Honestly:", 
-                        content: "1. Purpose: Am I ONLY trying to improve OUR processes, or am I also trying to prove something that could help the field?\n\n2. Design: Is this truly adapting to OUR local context, or am I following a fixed research protocol to test a hypothesis?\n\n3. Intent to Share: Even if I'm not required to publish, would I WANT to share these findings at conferences or in journals?\n\n4. Beneficiary: Is the primary beneficiary MY institution's operations, or is it the broader scientific community?\n\n5. Testing vs. Implementing: Am I TESTING whether something works (research) or IMPLEMENTING a known best practice (QI)?" 
+                        content: "1. Purpose: Am I ONLY trying to improve OUR processes, or am I also trying to prove something that could help the field or improve patient outcomes?\n\n2. Design: Is this truly adapting to OUR local context, or am I following a fixed research protocol to test a hypothesis?\n\n3. Intent to Share: Even if I'm not required to publish, would I WANT to share these findings at conferences or in journals?\n\n4. Beneficiary: Is the primary beneficiary MY institution's operations, or is it the broader scientific community?\n\n5. Testing vs. Implementing: Am I TESTING whether something works (research) or IMPLEMENTING a known best practice (QI)?" 
                     },
                     { 
                         title: "Common QI-to-Research Triggers:", 
-                        content: "• Multi-site collaboration (if other sites want your approach, it's generalizable)\n• Hypothesis testing or comparative effectiveness evaluation\n• Creating new algorithms or tools others could use\n• Systematic data collection beyond what's needed for local improvement\n• Plan to publish findings (even 'maybe later')\n• Testing unproven interventions\n• Control groups or randomization" 
+                        content: "• Multi-site collaboration (if other sites want your approach, it's generalizable)\n• Hypothesis testing or comparative effectiveness evaluation\n• Creating new algorithms or tools others could use\n• Systematic data collection beyond what's needed for local improvement\n• Plan to publish findings (even 'maybe later')\n• Testing unproven or novel tools or interventions on patients or their data\n• Control groups or randomization" 
                     },
                     {
                         title: "The Medical Device Complication:",
-                        content: "CRITICAL: If you're developing an AI tool that will diagnose, treat, or prevent disease - even if you call it 'QI' - it's a medical device requiring FDA consideration. You CANNOT bypass device regulations by claiming QI status. Intended use determines device status, not your project label. This is a major compliance risk."
+                        content: "CRITICAL: If you're developing an AI tool that is designed to support clinical decision making (diagnose, treat, mitigate, or prevent disease) - even if you call it 'QI' - it's a medical device requiring FDA consideration. You CANNOT bypass device regulations by claiming QI status. Intended use determines device status, not your project label. This is a major compliance risk."
                     }
                 ],
                 options: [
@@ -729,21 +729,21 @@
                         label: "Confirmed - ALL QI criteria are met, purely local improvement", 
                         next: "human_centered", 
                         summary: "QI Path: Internal Use Only", 
-                        why: "Focus remains on institutional processes per standard of care, not developing generalizable theories. Must still comply with HIPAA and institutional policies." 
+                        why: "Focus remains on institutional processes per standard of care, not developing generalizable theories and NOT influencing medical care. Must still comply with HIPAA and institutional policies." 
                     },
                     { 
                         label: "Actually, we do want to generalize/share findings, OR the tool might be a medical device", 
                         next: "human_centered", 
                         summary: "QI Path: Actually Research", 
-                        why: "Intent to generalize, share findings, or develop a medical device shifts activity to Research requiring IRB review. Generalizable knowledge per 45 CFR 46.102(l), or medical device development per 21 USC 321(h), both trigger research oversight requirements." 
+                        why: "Intent to generalize, share findings, or develop a medical device/SaMD shifts activity to Research requiring IRB review. Generalizable knowledge per 45 CFR 46.102, or medical device development, both trigger research oversight requirements." 
                     }
                 ]
             },
             human_centered: {
                 question: "Is Your AI 'Human-Centered'?",
-                info: "Does your AI mimic, replace, or augment human decision-making or behavior? For example: clinical decision support, behavioral prediction, risk assessment, diagnosis assistance. If it's just optimizing servers or processing speed, it's technical infrastructure, not human-centered.",
+                info: "Does your AI mimic/model, replace, or augment human decision-making or behavior? For example: clinical decision support, behavioral prediction or management, risk assessment, risk classification, diagnosis assistance. If it's just optimizing servers or processing speed, it's technical infrastructure, not human-centered.",
                 encouragement: "This distinction helps us understand the ethical implications. AI that mimics human judgment needs more careful oversight than AI that just makes technical processes faster.",
-                tip: "Human-centered AI examples: Predicting patient readmission, recommending treatments, identifying at-risk individuals, or modeling human behavior. Not human-centered: Database optimization, image compression, or network routing.",
+                tip: "Human-centered AI examples: Predicting patient readmission, recommending treatments or behavioral modification, identifying at-risk individuals, or modeling human behavior. Not human-centered: Database optimization, image compression, scheduling optimization NOT based on analysis of patient data, or network routing.",
                 options: [
                     { 
                         label: "Yes - It mimics human decisions or models human behavior", 
@@ -761,9 +761,9 @@
             },
             human_subjects_check: {
                 question: "Does This Involve Identifiable People?",
-                info: "This is about whether your data involves living individuals who could potentially be identified. Even if data is de-identified, modern AI can sometimes re-identify people by connecting data points across datasets (this is called 'triangulation risk').",
+                info: "This is about whether your data involves living individuals who could potentially be identified. Even if data is de-identified, modern AI can sometimes re-identify people by connecting data points across datasets.",
                 encouragement: "Privacy protection is crucial, and you're right to think carefully about this. The good news: if data is truly anonymized with no re-identification risk, it may not require full IRB review. But be careful - 'anonymous' is a high bar to meet.",
-                tip: "Data is NOT anonymous if: it includes direct identifiers (names, MRNs), small population sizes make individuals recognizable, or AI could link records across datasets. It IS anonymous if all identifiers are permanently removed and sample sizes are large enough to prevent re-identification.",
+                tip: "Data is NOT anonymous if: it includes direct or indirect identifiers (names, MRNs, any element of a date or location smaller than a state), small population sizes or rare conditions make individuals recognizable, or AI could link records across datasets. It IS anonymous if all identifiers are permanently removed and sample sizes are large enough to prevent re-identification.",
                 details: [
                     {
                         title: "IMPORTANT: Synthetic Data Is NOT Automatically Anonymous",
@@ -771,7 +771,7 @@
                     },
                     {
                         title: "When to Select 'Yes' (Identifiable or Re-ID Risk)",
-                        content: "Select 'Yes' if ANY of these apply:\n\n• Data includes any direct identifiers (names, dates, locations, IDs)\n• Working with small populations where individuals could be recognized\n• Using AI to analyze patterns that could link to individuals\n• Using SYNTHETIC DATA without formal privacy verification\n• Uncertain about re-identification risk\n• Data could be linked to other datasets to identify people\n\nWhen in doubt, select 'Yes' - your IRB can help assess the actual risk level."
+                        content: "Select 'Yes' if ANY of these apply:\n\n• Data includes any INDIRECT or direct identifiers (names, dates, locations, IDs)\n• Working with small populations where individuals could be recognized\n• Using AI to analyze patterns that could link to individuals\n• Using SYNTHETIC DATA without formal privacy verification\n• Uncertain about re-identification risk\n• Data could be linked to other datasets to identify people\n\nWhen in doubt, select 'Yes' - your IRB can help assess the actual risk level."
                     },
                     {
                         title: "When to Select 'No' (Truly Anonymous)",
@@ -783,7 +783,7 @@
                         label: "Yes - Data involves identifiable people, has re-identification risk, OR uses synthetic data without formal privacy verification", 
                         next: "risk_assessment", 
                         summary: "Status: Human Subjects Research", 
-                        why: "Activity involves living individuals and data is identifiable, carries re-identification risk (per 45 CFR 46.102(e)), or uses synthetic data without verified privacy protections." 
+                        why: "Activity involves living individuals and data is identifiable, carries re-identification risk, or uses synthetic data without verified privacy protections." 
                     },
                     { 
                         label: "No - Truly anonymous with verified privacy protections and no realistic re-identification risk", 
@@ -795,27 +795,27 @@
             },
             risk_assessment: {
                 question: "What Stage Is Your Research In?",
-                info: "This final step determines your review pathway. Stage 1 is algorithm development using existing data. Stage 2 is 'off-line' validation on new data. Stage 3 is 'live deployment' where AI outputs directly affect patient care in real-time.",
+                info: "This final step determines your review pathway. Stage 1 is algorithm development (discovery and ideation) using existing data. Stage 2 is 'off-line' validation on new data. Stage 3 is 'live deployment' where AI outputs directly influence patient care in real-time.",
                 encouragement: "You're almost there! Understanding your stage helps match you with the right level of review - we want sufficient oversight without unnecessary burden.",
-                tip: "IMPORTANT: Only Stage 1 (clinical association with existing data) typically qualifies for Expedited review. Stage 2 validation CAN be Expedited IF it's not a medical device AND the overall study is minimal risk. Medical device validation requires Full Board for SR/NSR determination even if testing is off-line.",
+                tip: "IMPORTANT: Only Stage 1 (clinical association with existing data) typically qualifies for Expedited review (unless there are study aspects outside tool development that are greater than minimal risk). Stage 2 validation CAN be Expedited IF it's not a medical device AND the overall study is minimal risk. Medical device validation requires Full Board for SR/NSR determination even if testing is off-line.",
                 options: [
                     { 
                         label: "Stage 1 - Algorithm development/clinical association (existing data)", 
                         next: "expedited_result", 
                         summary: "Review Path: Likely Expedited", 
-                        why: "Stage 1 algorithm development using existing data with minimal risk qualifies for Expedited review under 45 CFR 46.110, provided no greater-than-minimal-risk data collection methods." 
+                        why: "Stage 1 algorithm development (discovery and ideation) using existing data with minimal risk may qualify for Expedited review, provided no greater-than-minimal-risk activities are included in the study." 
                     },
                     { 
                         label: "Stage 2 - Performance validation (off-line, Medical Device)", 
                         next: "full_board_result", 
                         summary: "Review Path: Full Board Required for SR/NSR", 
-                        why: "Stage 2 validation of a medical device requires Full Board review for SR/NSR determination per 21 CFR 812, even when testing is off-line. The device's intended design and function triggers this requirement." 
+                        why: "Stage 2 validation of a medical device requires Full Board review for SR/NSR determination per 21 CFR 812, even when testing is off-line. The device's intended use triggers this requirement." 
                     },
                     { 
                         label: "Stage 2 - Performance validation (off-line, Non-Device)", 
                         next: "stage2_minimal_risk_check", 
                         summary: "Review Path: Depends on Risk Level", 
-                        why: "Stage 2 validation for non-device AI requires risk assessment. Expedited possible if minimal risk, but any greater-than-minimal risk element requires Full Board." 
+                        why: "Stage 2 validation for non-device AI requires an IRB study risk assessment. Expedited possible if minimal risk, but any greater-than-minimal risk element requires Full Board." 
                     },
                     { 
                         label: "Stage 3 - Real-world clinical deployment affecting patient care", 
@@ -827,21 +827,21 @@
             },
             stage2_minimal_risk_check: {
                 question: "Stage 2 Risk Level Assessment",
-                info: "For Stage 2 validation (non-device AI), we need to assess overall study risk. The key question: Are ALL aspects of your study minimal risk, including how you collect/access data and how you validate the AI?",
+                info: "For Stage 2 validation (non-device AI), we need to assess overall study risk. The key question: Are ALL aspects of your study minimal risk, including any patient non standard-of-care activities, how you collect/access data and how you validate the AI?",
                 encouragement: "Minimal risk means the probability and magnitude of harm are no greater than what people encounter in daily life or during routine exams. If you're just running algorithms on existing data with proper security, that's usually minimal risk.",
-                tip: "Greater-than-minimal risk triggers: Collecting new biological specimens, interviewing people about sensitive topics, accessing data requiring special approvals, any potential for psychological harm. If ANY element is greater than minimal risk, Full Board is required.",
+                tip: "Greater-than-minimal risk triggers: Collecting new biological specimens like punch biopsies, any potential for psychological harm, etc. If ANY element is greater than minimal risk, Full Board is required.",
                 options: [
                     { 
                         label: "Yes - ALL aspects are minimal risk", 
                         next: "expedited_result", 
                         summary: "Stage 2: Expedited Review", 
-                        why: "Stage 2 non-device validation with minimal risk across all study elements qualifies for Expedited review per 45 CFR 46.110." 
+                        why: "Stage 2 non-device validation with minimal risk across all study elements qualifies for Expedited review." 
                     },
                     { 
                         label: "No - At least one element is greater than minimal risk", 
                         next: "full_board_result", 
                         summary: "Stage 2: Full Board Required", 
-                        why: "Any greater-than-minimal-risk element in study design requires Full Board review per 45 CFR 46.110 limitations." 
+                        why: "Any greater-than-minimal-risk element in study design requires Full Board review." 
                     }
                 ]
             },
@@ -853,7 +853,7 @@
                     title: "Stage 3: FDA Clinical Investigation",
                     badge: "Full Board Review Required",
                     celebration: "Excellent! You've Mapped Your Path",
-                    why_final: "Your project is a formal FDA Clinical Investigation because you're testing an AI 'test article' for safety and effectiveness in humans. This is serious, important work that requires the highest level of review.\n\nWhat this means: You'll need Full Board review and a formal risk determination (Significant Risk vs. Non-Significant Risk). This might sound daunting, but it's actually your 'regulatory passport' - if the board determines your device is Non-Significant Risk (NSR), you can proceed without a formal FDA application.\n\nGood news: If you can shift to 'off-line' validation first (Stage 1 or 2), you may qualify for a faster Expedited review pathway to start.",
+                    why_final: "Your project is a formal FDA Clinical Investigation because you're testing an AI 'test article' for safety and effectiveness in humans. This is serious, important work that requires the highest level of review.\n\nWhat this means: You'll need Full Board review and a formal device risk determination (Significant Risk vs. Non-Significant Risk). This might sound daunting, but it's actually your 'regulatory passport' - if the board determines your device is Non-Significant Risk (NSR), you can proceed without a formal FDA application.\n\nGood news: If you can shift to 'off-line' validation first (Stage 1 or 2), you may qualify for a faster Expedited review pathway to start.",
                     next_steps: "Schedule a pre-review consultation with your IRB. Prepare your protocol with clear safety monitoring plans. Consider starting with retrospective validation (Stage 1-2) before prospective testing (Stage 3)."
                 } 
             },
@@ -864,8 +864,8 @@
                     title: "Technical Infrastructure Path",
                     badge: "Not Human Subjects Research",
                     celebration: "Great News - Streamlined Path Ahead!",
-                    why_final: "Your AI project focuses on technical optimization rather than human decision-making or health outcomes. This means it falls outside the scope of human subjects research regulations (45 CFR 46).\n\nWhat this means: You don't need IRB review for human subjects protection, though you should still follow your institution's standard IT governance and data security policies.\n\nThis is a common scenario for infrastructure AI - you're optimizing systems, not making clinical decisions. Much simpler regulatory pathway!",
-                    next_steps: "Confirm with your IT governance team. Document your data security measures. Verify you're complying with institutional policies for data use."
+                    why_final: "Your AI project focuses on technical optimization rather than human decision-making or health outcomes. This means it likely falls outside the scope of the IRB.\n\nWhat this means: You don't need IRB review for human subjects protection, though you should still follow HIPAA requirements, your institution's standard IT governance, third-party risk, and data security policies.\n\nThis is a common scenario for infrastructure AI - you're optimizing systems, not making clinical decisions. Much simpler regulatory pathway!",
+                    next_steps: "Confirm with your IT governance team and Privacy Board. Document your data security measures. Verify you're complying with institutional policies for data use."
                 } 
             },
             
@@ -875,7 +875,7 @@
                     title: "Privacy Partnership Path",
                     badge: "Not Human Subjects Research",
                     celebration: "Wonderful - You've Done Strong Privacy Protection!",
-                    why_final: "While your work qualifies as Research (because you're generating generalizable knowledge), it doesn't involve 'human subjects' because your data is truly de-identified and the risk of re-identification has been neutralized.\n\nWhat this means: You've successfully protected privacy such that modern AI triangulation can't re-identify individuals. This is exactly what good research ethics aims for - advancing science while protecting people.\n\nRecommendation: Get an official 'Not Human Subjects Research' determination letter from your IRB for your records. This documents your due diligence and protects you if questions arise later.",
+                    why_final: "While your work qualifies as Research (because you're generating generalizable knowledge), it doesn't involve (a) medical device development nor (b) 'human subjects' because your data is truly de-identified and the risk of re-identification has been neutralized.\n\nWhat this means: You've successfully protected privacy such that modern AI triangulation can't re-identify individuals. This is exactly what good research ethics aims for - advancing science while protecting people.\n\nRecommendation: Get an official 'Not Human Subjects Research' determination letter from your IRB for your records. This documents your due diligence and protects you if questions arise later.",
                     next_steps: "Submit a Not HSR determination form to your IRB. Document your de-identification methods. Maintain your data security protocols."
                 } 
             },
@@ -885,8 +885,8 @@
                 result: { 
                     title: "Expedited Review Pathway",
                     badge: "Minimal Risk - Streamlined Review",
-                    celebration: "Perfect - You've Earned the Fast Track!",
-                    why_final: "Your research qualifies for Expedited review because you're in Stage 1 (algorithm development) OR Stage 2 with non-device AI where all study elements are minimal risk. The risk level is no greater than what people experience in routine life or clinical exams.\n\nWhat this means: One or two IRB reviewers can approve your project administratively, usually within 2-4 weeks. This is much faster than Full Board review, which can take months. You've chosen the smart development path - validate thoroughly before deployment.\n\nIMPORTANT: If you later move to Stage 3 (live deployment) OR if you're validating a medical device, you'll need Full Board review and an NSR determination. Think of this as a staged approach that matches oversight intensity to risk and development phase.",
+                    celebration: "Perfect - You're on the Expedited Track!",
+                    why_final: "Your research qualifies for Expedited review because you're in Stage 1 (algorithm development) OR Stage 2 with non-device AI where all study elements are minimal risk. The risk level is no greater than what people experience in routine life or clinical exams.\n\nWhat this means: One or two IRB reviewers can approve your project without taking it to a convened meeting, usually within a few weeks or less. This is much faster than Full Board review, which can take longer. You've chosen the smart development path - validate thoroughly before deployment.\n\nIMPORTANT: If you later move to Stage 3 (live deployment) OR if you're validating a medical device, you'll need Full Board review for a new risk determination. Think of this as a staged approach that matches oversight intensity to risk and development phase.",
                     next_steps: "Submit your protocol for Expedited review. Clearly describe your stage (1 or 2) and methods. If Stage 2, confirm non-device status and minimal risk. Plan your Stage 3 transition strategy in advance if clinical deployment is the goal."
                 } 
             },
@@ -897,7 +897,7 @@
                     title: "Full Board Strategic Review",
                     badge: "Stage 3 or Device Validation",
                     celebration: "You're Ready for Comprehensive Oversight!",
-                    why_final: "Your project requires Full Board review because EITHER: (1) you're in Stage 3 where AI outputs will directly influence real-world patient care decisions, OR (2) you're validating a tool that might meet the FDA medical device definition in Stage 2.\n\nWhat this means: Your full IRB committee will review your protocol at a convened meeting per 21 CFR 56.108. When validating a potential medical device (Stage 2 or 3), ONLY the full board can grant the critical 'Significant Risk (SR) vs. Non-Significant Risk (NSR) Determination' required by 21 CFR 812.3(m) and 812.20. This SR/NSR determination cannot be made through expedited review.\n\nRegulatory Framework: Your device development and testing must comply with:\n• 21 CFR Part 56 (IRB regulations - governing institutional review board composition, function, and operations)\n• 21 CFR Part 812 (Investigational Device Exemptions - IDE requirements, SR/NSR determinations, and study monitoring)\n• 21 CFR Part 820 (Quality System Regulation - design controls, validation, and documentation if moving toward commercialization)\n• 21 CFR Part 11 (Electronic Records - if using electronic systems for data capture, signatures, or record keeping)\n\nThe NSR determination is your golden ticket: It means you have an 'Abbreviated IDE' per 21 CFR 812.2(b) and can proceed without filing a formal FDA application - the IRB acts as the FDA's surrogate. This saves months compared to the full IDE process.\n\nImportant note: After the Full Board grants initial approval and makes the SR/NSR determination, the Board can vote per 21 CFR 56.110 to allow continuing review (amendments, annual renewals) to proceed via expedited process. But that initial review and device determination requires the full committee's expertise.\n\nThis is actually good news: The board brings collective expertise in clinical risk, ethics, and regulatory strategy. They'll help you strengthen your protocol and ensure you're properly validated (Stage 2 device) or deployment-ready (Stage 3). Many institutions complete Full Board review in 4-8 weeks with good preparation.",
+                    why_final: "Your project requires Full Board review because EITHER: (1) you're in Stage 3 where AI outputs will directly influence real-world patient care decisions, OR (2) you're validating a tool that might meet the FDA medical device definition in Stage 2.\n\nWhat this means: Your full IRB committee will review your protocol at a convened meeting. When validating a potential medical device (Stage 2 or 3), ONLY the full board can grant the critical 'Significant Risk (SR) vs. Non-Significant Risk (NSR) Determination' required by 21 CFR 812. This SR/NSR determination cannot be made through expedited review.\n\nRegulatory Framework: Your device development and testing must comply with:\n• 21 CFR Part 56 (IRB regulations)\n• 21 CFR Part 812 (Investigational Device Exemptions - IDE or abbreviated IDE requirements, SR/NSR determinations)\n• 21 CFR Part 810 & 820 (Quality System Regulation - design controls, validation, and documentation)\n• 21 CFR Part 11 (Electronic Records - if using electronic systems for data capture, signatures, or record keeping)\n\nIf the IRB issues an NSR determination, this is your golden ticket: It means you have an 'Abbreviated IDE' per 21 CFR 812.2(b) and can proceed without filing a formal FDA application to conduct research on the SaMD - the IRB acts as the FDA's surrogate. This saves months compared to the full IDE process.\n\nImportant note: After the Full Board grants initial approval and makes the SR/NSR determination, the Board can vote to allow continuing review (annual renewals) to proceed via expedited process (unless the risk increases later). But that initial review and device determination requires the full committee's review first.\n\nThis is actually good news: The board brings collective expertise in clinical risk, ethics, and regulatory strategy. They'll help you strengthen your protocol and ensure you're properly validated (Stage 2 device) or deployment-ready (Stage 3). If your IRB application and protocol are well-prepared, many institutions complete Full Board review in 2-6 weeks.",
                     next_steps: "Schedule a pre-submission meeting with IRB staff. Prepare comprehensive risk analysis and device classification rationale with the tool's intended design and function clearly documented. Develop your monitoring and stopping rules per 21 CFR 812. If Stage 3, consider a pilot phase to demonstrate safety before full deployment. If Stage 2 device, prepare validation plan with performance metrics, bias assessment, and explanation of the tool's intended use (who it's designed for, what context, what function). Begin planning for 21 CFR Part 820 design control requirements if commercialization is anticipated."
                 } 
             }
@@ -1040,7 +1040,7 @@
                     
                     <div class="celebration-box">
                         <h4>🎉 ${res.celebration}</h4>
-                        <p>You've successfully navigated the regulatory landscape. Below you'll find your personalized roadmap based on the Eto 3-Stage Framework.</p>
+                        <p>You've successfully navigated the regulatory landscape. Below you'll find your personalized roadmap based on the 3-Stage Framework.</p>
                     </div>
                     
                     <div class="section-card">
@@ -1057,7 +1057,7 @@
                     
                     <div class="section-card">
                         <h3>Your Decision Journey (For Your Records)</h3>
-                        <p style="margin-bottom: 15px; color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')};">Here's how we reached this conclusion, with full regulatory citations:</p>
+                        <p style="margin-bottom: 15px; color: ${getComputedStyle(document.documentElement).getPropertyValue('--text-secondary')};">Here's how we reached this conclusion:</p>
                         <table class="summary-table">
                             <thead>
                                 <tr>
@@ -1080,7 +1080,7 @@
                     
                     <div class="help-callout">
                         <strong>📚 Understanding the SR/NSR Determination</strong>
-                        <p>If you reached Full Board review, you'll hear about "NSR" (Non-Significant Risk). This is a special designation that works like an abbreviated FDA approval. If your IRB determines your device is NSR, you can proceed with your research without filing a full Investigational Device Exemption (IDE) with the FDA. The IRB essentially acts as FDA's representative, giving you a faster path to deployment while maintaining rigorous safety oversight. Think of it as your "regulatory passport" that unlocks clinical implementation.</p>
+                        <p>If you reached Full Board review, you'll hear about "NSR" (Non-Significant Risk). This is a special designation that works like an abbreviated FDA approval. If your IRB determines your device is NSR, you can proceed with your research without filing a full Investigational Device Exemption (IDE) with the FDA. The IRB essentially acts as FDA's representative, giving you a faster path to deployment while maintaining rigorous safety oversight. Think of it as your "regulatory passport" that unlocks clinical research implementation. IMPORTANT: Once your research concludes, if you wish to deploy the tool OUTSIDE of a research context, you will likely need to work with the FDA.</p>
                     </div>
                 </div>
                 
