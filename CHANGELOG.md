@@ -113,5 +113,5 @@ For updates, questions, or to report issues:
 
 ```
 Eto, T. (2026). AI Research Navigator: Interactive IRB Decision Tree Tool (Version 1.0.0). 
-TechInHSR LLC. https://github.com/TechInHSR/ai-research-navigator
+TechInHSR LLC. https://github.com/etotamiko-lab/ai-research-navigator
 ```
